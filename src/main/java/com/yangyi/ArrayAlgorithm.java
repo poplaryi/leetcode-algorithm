@@ -32,7 +32,7 @@ public class ArrayAlgorithm {
     }
     
     /**
-     * 两个数组的交集Ⅱ（通过）
+     *  两个数组的交集Ⅱ
      */
     public int[] intersect2(int[] nums1, int[] nums2) {
         List<Integer> v1 = new ArrayList<>();
@@ -54,7 +54,7 @@ public class ArrayAlgorithm {
     }
     
     /**
-     * 加一（通过）
+     *  加一
      */
     public int[] plusOne(int[] digits) {
         for (int i = digits.length - 1; i >= 0; i--) {
@@ -73,24 +73,25 @@ public class ArrayAlgorithm {
     }
     
     /**
-     * 移动零
+     *  移动零
      */
     public void moveZeroes(int[] nums) {
-        Arrays.sort(nums);
-        for (int i = 0; i < nums.length; ) {
+        int index = nums.length - 1;
+        for (int i = 0; i <= index; ) {
             if (nums[i] == 0) {
                 for (int j = i; j < nums.length - 1; j++) {
                     nums[j] = nums[j + 1];
                 }
                 nums[nums.length - 1] = 0;
-            }else {
+                --index;
+            } else {
                 ++i;
             }
         }
     }
     
     /**
-     * 两数之和（通过）
+     *  两数之和
      */
     public int[] twoSum(int[] nums, int target) {
         int[] arr = new int[2];
@@ -107,7 +108,7 @@ public class ArrayAlgorithm {
     }
     
     /**
-     * 有效的数独
+     *  有效的数独
      */
     public boolean isValidSudoku(char[][] board) {
         int len = board.length;
