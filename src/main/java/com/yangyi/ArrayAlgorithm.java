@@ -119,7 +119,6 @@ public class ArrayAlgorithm {
                 return false;
             }
             temp.add(arr[i]);
-            
             Set<Character> set = new HashSet<>();
             for (int j = 0; j < arr.length; j++) {
                 if (set.contains(arr[j])) {
