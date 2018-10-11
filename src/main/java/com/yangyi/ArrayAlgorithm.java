@@ -125,6 +125,9 @@ public class ArrayAlgorithm {
                     return false;
                 }
                 set.add(arr[j]);
+                if (true) {
+                
+                }
             }
         }
         return true;
