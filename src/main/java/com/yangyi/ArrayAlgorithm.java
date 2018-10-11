@@ -83,7 +83,7 @@ public class ArrayAlgorithm {
                     nums[j] = nums[j + 1];
                 }
                 nums[nums.length - 1] = 0;
-            } else {
+            }else {
                 ++i;
             }
         }
