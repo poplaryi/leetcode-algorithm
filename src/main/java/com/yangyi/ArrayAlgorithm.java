@@ -2,11 +2,6 @@ package com.yangyi;
 
 import java.util.*;
 
-/**
- * @Description
- * @Author kcyangyi@gmail.com
- * @Time 2018/10/9 12:40
- */
 public class ArrayAlgorithm {
     
     public int[] intersect(int[] nums1, int[] nums2) {
