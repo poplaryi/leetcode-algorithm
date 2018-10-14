@@ -1,6 +1,7 @@
 package com.yangyi;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class ArrayAlgorithm {
     
@@ -27,7 +28,51 @@ public class ArrayAlgorithm {
     }
     
     /**
-     *  两个数组的交集Ⅱ
+     * 从排序数组中删除重复项
+     */
+    public int removeDuplicates(int[] nums) {
+        ArrayList<Integer> list = new ArrayList<>();
+        Arrays.stream(nums).forEach(n -> {
+            if (!list.contains(n)) {
+                list.add(n);
+                nums[list.indexOf(n)] = n;
+            }
+        });
+        return list.size();
+    }
+    
+    /**
+     * 存在重复
+     */
+    public boolean containsDuplicate(int[] nums) {
+        List<Integer> list = Arrays.stream(nums).boxed().collect(Collectors.toList());
+        Map<Integer, Boolean> map = new HashMap<>();
+        for (int n : list) {
+            if (map.get(n) != null) {
+                return true;
+            }
+            map.put(n, true);
+        }
+        return false;
+    }
+    
+    /**
+     * 只出现一次的数字
+     */
+    public int singleNumber(int[] nums) {
+        List<Integer> list = new ArrayList<>();
+        Arrays.stream(nums).forEach(num -> {
+            if (list.contains(num)) {
+                list.remove(new Integer(num));
+            } else {
+                list.add(num);
+            }
+        });
+        return list.get(0);
+    }
+    
+    /**
+     * 两个数组的交集Ⅱ
      */
     public int[] intersect2(int[] nums1, int[] nums2) {
         List<Integer> v1 = new ArrayList<>();
@@ -49,7 +94,7 @@ public class ArrayAlgorithm {
     }
     
     /**
-     *  加一
+     * 加一
      */
     public int[] plusOne(int[] digits) {
         for (int i = digits.length - 1; i >= 0; i--) {
@@ -68,7 +113,7 @@ public class ArrayAlgorithm {
     }
     
     /**
-     *  移动零
+     * 移动零
      */
     public void moveZeroes(int[] nums) {
         int index = nums.length - 1;
@@ -86,7 +131,7 @@ public class ArrayAlgorithm {
     }
     
     /**
-     *  两数之和
+     * 两数之和
      */
     public int[] twoSum(int[] nums, int target) {
         int[] arr = new int[2];
@@ -103,7 +148,7 @@ public class ArrayAlgorithm {
     }
     
     /**
-     *  有效的数独
+     * 有效的数独
      */
     public boolean isValidSudoku(char[][] board) {
         int len = board.length;
