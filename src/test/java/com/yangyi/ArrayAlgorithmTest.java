@@ -15,6 +15,7 @@ public class ArrayAlgorithmTest {
         
         ArrayAlgorithm algorithm = new ArrayAlgorithm();
         
-        algorithm.moveZeroes(arr1);
+        String str = "aaadd";
+        algorithm.firstUniqChar(str);
     }
 }

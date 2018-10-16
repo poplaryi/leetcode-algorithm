@@ -182,7 +182,7 @@ public class ArrayAlgorithm {
      * 颠倒整数
      */
     public int reverse(int x) {
-        if(x==0){
+        if (x == 0) {
             return 0;
         }
         String numStr = x + "";
@@ -205,14 +205,40 @@ public class ArrayAlgorithm {
         }
         
         temp = sign + temp;
-    
+        
         int num = 0;
         try {
             num = Integer.parseInt(temp);
         } catch (RuntimeException e) {
             num = 0;
-        }finally {
+        } finally {
             return num;
         }
+    }
+    
+    public int firstUniqChar(String s) {
+        if (s.length() == 0 || s.equals("") || s == null) {
+            return -1;
+        }
+        if (s.length() == 1) {
+            return 0;
+        }
+        String[] arr = s.split("");
+        for (int i = 0; i < arr.length; i++) {
+            boolean flag = true;
+            if (i == arr.length - 1) {
+                return -1;
+            }
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i].equals(arr[j])) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag) {
+                return i;
+            }
+        }
+        return -1;
     }
 }
