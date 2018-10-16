@@ -7,10 +7,12 @@ public class ArrayAlgorithm {
     
     public int[] intersect(int[] nums1, int[] nums2) {
         List<Integer> list1 = new ArrayList<>();
-        Arrays.stream(nums1).forEach(m -> list1.add(m));
+        Arrays.stream(nums1)
+              .forEach(m -> list1.add(m));
         
         List<Integer> list2 = new ArrayList<>();
-        Arrays.stream(nums2).forEach(n -> list2.add(n));
+        Arrays.stream(nums2)
+              .forEach(n -> list2.add(n));
         
         List<Integer> temp = new ArrayList<>();
         for (int i = 0; i < list1.size(); i++) {
@@ -32,12 +34,13 @@ public class ArrayAlgorithm {
      */
     public int removeDuplicates(int[] nums) {
         ArrayList<Integer> list = new ArrayList<>();
-        Arrays.stream(nums).forEach(n -> {
-            if (!list.contains(n)) {
-                list.add(n);
-                nums[list.indexOf(n)] = n;
-            }
-        });
+        Arrays.stream(nums)
+              .forEach(n -> {
+                  if (!list.contains(n)) {
+                      list.add(n);
+                      nums[list.indexOf(n)] = n;
+                  }
+              });
         return list.size();
     }
     
@@ -45,7 +48,9 @@ public class ArrayAlgorithm {
      * 存在重复
      */
     public boolean containsDuplicate(int[] nums) {
-        List<Integer> list = Arrays.stream(nums).boxed().collect(Collectors.toList());
+        List<Integer> list = Arrays.stream(nums)
+                                   .boxed()
+                                   .collect(Collectors.toList());
         Map<Integer, Boolean> map = new HashMap<>();
         for (int n : list) {
             if (map.get(n) != null) {
@@ -61,13 +66,14 @@ public class ArrayAlgorithm {
      */
     public int singleNumber(int[] nums) {
         List<Integer> list = new ArrayList<>();
-        Arrays.stream(nums).forEach(num -> {
-            if (list.contains(num)) {
-                list.remove(new Integer(num));
-            } else {
-                list.add(num);
-            }
-        });
+        Arrays.stream(nums)
+              .forEach(num -> {
+                  if (list.contains(num)) {
+                      list.remove(new Integer(num));
+                  } else {
+                      list.add(num);
+                  }
+              });
         return list.get(0);
     }
     
@@ -76,15 +82,17 @@ public class ArrayAlgorithm {
      */
     public int[] intersect2(int[] nums1, int[] nums2) {
         List<Integer> v1 = new ArrayList<>();
-        Arrays.stream(nums1).forEach(i -> v1.add(i));
+        Arrays.stream(nums1)
+              .forEach(i -> v1.add(i));
         
         List<Integer> temp = new ArrayList<>();
-        Arrays.stream(nums2).forEach(i -> {
-            if (v1.contains(i)) {
-                v1.remove(new Integer(i));
-                temp.add(i);
-            }
-        });
+        Arrays.stream(nums2)
+              .forEach(i -> {
+                  if (v1.contains(i)) {
+                      v1.remove(new Integer(i));
+                      temp.add(i);
+                  }
+              });
         
         int[] arr = new int[temp.size()];
         for (int i = 0; i < temp.size(); i++) {
@@ -168,5 +176,43 @@ public class ArrayAlgorithm {
             }
         }
         return true;
+    }
+    
+    /**
+     * 颠倒整数
+     */
+    public int reverse(int x) {
+        if(x==0){
+            return 0;
+        }
+        String numStr = x + "";
+        
+        String sign = "";
+        
+        String temp = "";
+        
+        String[] arr = numStr.split("");
+        
+        for (int i = arr.length - 1; i >= 0; i--) {
+            if (("0").equals(arr[i]) && i == arr.length - 1) {
+                continue;
+            }
+            if (("-").equals(arr[i])) {
+                sign = "-";
+                continue;
+            }
+            temp += arr[i];
+        }
+        
+        temp = sign + temp;
+    
+        int num = 0;
+        try {
+            num = Integer.parseInt(temp);
+        } catch (RuntimeException e) {
+            num = 0;
+        }finally {
+            return num;
+        }
     }
 }
