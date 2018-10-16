@@ -15,7 +15,5 @@ public class ArrayAlgorithmTest {
         
         ArrayAlgorithm algorithm = new ArrayAlgorithm();
         
-        String str = "aaadd";
-        algorithm.firstUniqChar(str);
     }
 }

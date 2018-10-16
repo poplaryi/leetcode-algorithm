@@ -1,5 +1,7 @@
 package com.yangyi;
 
+import java.util.*;
+
 public class StringAlgorithm {
     /**
      * 反转字符串
@@ -76,4 +78,46 @@ public class StringAlgorithm {
         }
         return -1;
     }
+    
+    /**
+     * 有效的字母异位词
+     */
+    public boolean isAnagram(String s, String t) {
+        final Boolean[] flag = {true};
+        
+        if(s.equals(t)) {
+            flag[0] = true;
+        }
+        Map<String,Integer> map = new HashMap<>();
+        
+        Arrays.stream(s.split("")).forEach(a-> {
+            if(map.containsKey(a)){
+                map.put(a,map.get(a)+1);
+            }else{
+                map.put(a,1);
+            }
+        });
+        Map<String,Integer> temp = new HashMap<>();
+        Arrays.stream(t.split("")).forEach(b->{
+            if(!map.containsKey(b)){
+                flag[0] = false;
+            }
+            if(temp.containsKey(b)){
+                temp.put(b,temp.get(b)+1);
+            }else{
+                temp.put(b,1);
+            }
+        });
+        
+        map.forEach((k,v) ->{
+            if(temp.get(k) != v){
+                flag[0] = false;
+            }
+        });
+        if(s.length() != t.length()){
+            flag[0] = false;
+        }
+        return flag[0];
+    }
+    
 }
