@@ -85,38 +85,40 @@ public class StringAlgorithm {
     public boolean isAnagram(String s, String t) {
         final Boolean[] flag = {true};
         
-        if(s.equals(t)) {
-            flag[0] = true;
+        if (s.equals(t)) {
+            return true;
         }
-        Map<String,Integer> map = new HashMap<>();
+        if (s.length() != t.length()) {
+            return false;
+        }
+        Map<String, Integer> map = new HashMap<>();
         
-        Arrays.stream(s.split("")).forEach(a-> {
-            if(map.containsKey(a)){
-                map.put(a,map.get(a)+1);
-            }else{
-                map.put(a,1);
+        Arrays.stream(s.split("")).forEach(a -> {
+            if (map.containsKey(a)) {
+                map.put(a, map.get(a) + 1);
+            } else {
+                map.put(a, 1);
             }
         });
-        Map<String,Integer> temp = new HashMap<>();
-        Arrays.stream(t.split("")).forEach(b->{
-            if(!map.containsKey(b)){
+        Map<String, Integer> temp = new HashMap<>();
+        
+        Arrays.stream(t.split("")).forEach(b -> {
+            if (!map.containsKey(b)) {
                 flag[0] = false;
             }
-            if(temp.containsKey(b)){
-                temp.put(b,temp.get(b)+1);
-            }else{
-                temp.put(b,1);
+            if (temp.containsKey(b)) {
+                temp.put(b, temp.get(b) + 1);
+            } else {
+                temp.put(b, 1);
             }
         });
         
-        map.forEach((k,v) ->{
-            if(temp.get(k) != v){
+        map.forEach((k, v) -> {
+            if (temp.containsKey(k) && !temp.get(k).equals(v)) {
                 flag[0] = false;
             }
         });
-        if(s.length() != t.length()){
-            flag[0] = false;
-        }
+        
         return flag[0];
     }
     
