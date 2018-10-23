@@ -3,6 +3,7 @@ package com.yangyi;
 import java.util.*;
 
 public class StringAlgorithm {
+
     /**
      * 反转字符串
      */
@@ -14,7 +15,7 @@ public class StringAlgorithm {
         }
         return temp.toString();
     }
-    
+
     /**
      * 颠倒整数
      */
@@ -23,13 +24,13 @@ public class StringAlgorithm {
             return 0;
         }
         String numStr = x + "";
-        
+
         String sign = "";
-        
+
         String temp = "";
-        
+
         String[] arr = numStr.split("");
-        
+
         for (int i = arr.length - 1; i >= 0; i--) {
             if (("0").equals(arr[i]) && i == arr.length - 1) {
                 continue;
@@ -40,9 +41,9 @@ public class StringAlgorithm {
             }
             temp += arr[i];
         }
-        
+
         temp = sign + temp;
-        
+
         int num = 0;
         try {
             num = Integer.parseInt(temp);
@@ -52,39 +53,39 @@ public class StringAlgorithm {
             return num;
         }
     }
-    
+
+    /**
+     * 找到第一个不重复的字符
+     */
     public int firstUniqChar(String s) {
-        if (s.length() == 0 || s.equals("") || s == null) {
-            return -1;
-        }
-        if (s.length() == 1) {
-            return 0;
-        }
         String[] arr = s.split("");
+        Map<String, Integer> map = new LinkedHashMap<>();
+        Arrays.stream(arr).forEach(r -> {
+            if (map.containsKey(r)) {
+                map.put(r, map.get(r) + 1);
+            }
+            map.put(r, 1);
+        });
+        final String[] temp = {""};
+        map.forEach((k, v) -> {
+            if (v == 1) {
+                temp[0] = k;
+            }
+        });
         for (int i = 0; i < arr.length; i++) {
-            boolean flag = true;
-            if (i == arr.length - 1) {
-                return -1;
-            }
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[i].equals(arr[j])) {
-                    flag = false;
-                    break;
-                }
-            }
-            if (flag) {
+            if (arr[i].equals(temp[0])) {
                 return i;
             }
         }
-        return -1;
+        return 0;
     }
-    
+
     /**
      * 有效的字母异位词
      */
     public boolean isAnagram(String s, String t) {
         final Boolean[] flag = {true};
-        
+
         if (s.equals(t)) {
             return true;
         }
@@ -92,7 +93,7 @@ public class StringAlgorithm {
             return false;
         }
         Map<String, Integer> map = new HashMap<>();
-        
+
         Arrays.stream(s.split("")).forEach(a -> {
             if (map.containsKey(a)) {
                 map.put(a, map.get(a) + 1);
@@ -101,7 +102,7 @@ public class StringAlgorithm {
             }
         });
         Map<String, Integer> temp = new HashMap<>();
-        
+
         Arrays.stream(t.split("")).forEach(b -> {
             if (!map.containsKey(b)) {
                 flag[0] = false;
@@ -112,14 +113,14 @@ public class StringAlgorithm {
                 temp.put(b, 1);
             }
         });
-        
+
         map.forEach((k, v) -> {
             if (temp.containsKey(k) && !temp.get(k).equals(v)) {
                 flag[0] = false;
             }
         });
-        
+
         return flag[0];
     }
-    
+
 }
