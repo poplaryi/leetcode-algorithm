@@ -67,11 +67,12 @@ public class StringAlgorithm {
             map.put(r, 1);
         });
         final String[] temp = {""};
-        map.forEach((k, v) -> {
-            if (v == 1) {
-                temp[0] = k;
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            if(entry.getValue() <= 1){
+                temp[0] = entry.getKey();
+                break;
             }
-        });
+        }
         for (int i = 0; i < arr.length; i++) {
             if (arr[i].equals(temp[0])) {
                 return i;
