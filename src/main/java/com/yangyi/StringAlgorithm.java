@@ -63,8 +63,9 @@ public class StringAlgorithm {
         Arrays.stream(arr).forEach(r -> {
             if (map.containsKey(r)) {
                 map.put(r, map.get(r) + 1);
+            }else{
+                map.put(r, 1);
             }
-            map.put(r, 1);
         });
         final String[] temp = {""};
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
@@ -78,7 +79,7 @@ public class StringAlgorithm {
                 return i;
             }
         }
-        return 0;
+        return -1;
     }
 
     /**

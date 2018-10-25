@@ -16,6 +16,9 @@ public class StringAlgorithmTest {
     
     @Test
     public void firstUniqChar() {
+        StringAlgorithm algorithm = new StringAlgorithm();
+        String s = "loveleetcode";
+        algorithm.firstUniqChar(s);
     }
     
     @Test
