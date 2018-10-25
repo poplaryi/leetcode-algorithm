@@ -58,6 +58,9 @@ public class StringAlgorithm {
      * 找到第一个不重复的字符
      */
     public int firstUniqChar(String s) {
+        if("".equals(s) || s == null){
+            return -1;
+        }
         String[] arr = s.split("");
         Map<String, Integer> map = new LinkedHashMap<>();
         Arrays.stream(arr).forEach(r -> {
