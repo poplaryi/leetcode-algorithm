@@ -58,7 +58,7 @@ public class StringAlgorithm {
      * 找到第一个不重复的字符
      */
     public int firstUniqChar(String s) {
-        if("".equals(s) || s == null){
+        if ("".equals(s) || s == null) {
             return -1;
         }
         String[] arr = s.split("");
@@ -66,13 +66,13 @@ public class StringAlgorithm {
         Arrays.stream(arr).forEach(r -> {
             if (map.containsKey(r)) {
                 map.put(r, map.get(r) + 1);
-            }else{
+            } else {
                 map.put(r, 1);
             }
         });
         final String[] temp = {""};
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
-            if(entry.getValue() <= 1){
+            if (entry.getValue() <= 1) {
                 temp[0] = entry.getKey();
                 break;
             }
@@ -126,6 +126,39 @@ public class StringAlgorithm {
         });
 
         return flag[0];
+    }
+
+    /**
+     * 验证回文字符串
+     */
+    public boolean isPalindrome(String s) {
+        if (s.length() <= 1 || !s.matches(".*[a-zA-z0-9]+.*")) {
+            return true;
+        }
+        int temp = s.length() - 1;
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = temp; j >= 0; j--) {
+                if (i == j) {
+                    return true;
+                }
+                String a = String.valueOf(s.charAt(i));
+                if (!a.matches("[a-zA-z0-9]") || a.equals("`")) {
+                    break;
+                }
+                String b = String.valueOf(s.charAt(j));
+                if (!b.matches("[a-zA-z0-9]") || b.equals("`")) {
+                    temp--;
+                    continue;
+                }
+                if (!String.valueOf(s.charAt(i)).toUpperCase()
+                    .equals(String.valueOf(s.charAt(j)).toUpperCase())) {
+                    return false;
+                }
+                temp--;
+                break;
+            }
+        }
+        return true;
     }
 
 }
