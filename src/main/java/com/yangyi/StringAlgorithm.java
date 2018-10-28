@@ -161,4 +161,67 @@ public class StringAlgorithm {
         return true;
     }
 
+    /**
+     * 字符串转整数
+     */
+    public int myAtoi(String str) {
+        String sign = "+";
+        long temp;
+        String num = "";
+        str = str.replace(" ", "");
+        if ("".equals(str) || str == null) {
+            return 0;
+        }
+        if (!String.valueOf(str.charAt(0)).matches("[0-9]")
+            && !"+".equals(String.valueOf(str.charAt(0)))
+            && !"-".equals(String.valueOf(str.charAt(0)))) {
+            return 0;
+        }
+        if ("-".equals(String.valueOf(str.charAt(0)))) {
+            sign = "-";
+            str = str.substring(1);
+        } else if ("+".equals(String.valueOf(str.charAt(0)))) {
+            str = str.substring(1);
+        }
+        if ("".equals(str)) {
+            return 0;
+        }
+        boolean flag = true;
+        do {
+            if (str.length() > 0 && "0".equals(String.valueOf(str.charAt(0)))) {
+                str = str.substring(1);
+            } else {
+                flag = false;
+            }
+        } while (flag);
+        for (int i = 0; i < str.length(); i++) {
+            if (!" ".equals(String.valueOf(str.charAt(i)))) {
+                if (String.valueOf(str.charAt(i)).matches("[0-9]")) {
+                    num += str.charAt(i);
+                    continue;
+                }
+                break;
+            }
+        }
+        if (num != null && !"".equals(num)) {
+            if (num.length() > 10) {
+                if ("-".equals(sign)) {
+                    return Integer.MIN_VALUE;
+                }
+                return Integer.MAX_VALUE;
+            }
+            temp = Long.parseLong(num);
+            if ("-".equals(sign)) {
+                temp = temp * -1;
+            }
+            if (temp >= Integer.MAX_VALUE) {
+                return Integer.MAX_VALUE;
+            } else if (temp <= Integer.MIN_VALUE) {
+                return Integer.MIN_VALUE;
+            } else {
+                return new Long(temp).intValue();
+            }
+        }
+        return 0;
+    }
 }

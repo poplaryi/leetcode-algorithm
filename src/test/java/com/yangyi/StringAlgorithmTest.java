@@ -36,4 +36,10 @@ public class StringAlgorithmTest {
         String s = "`l;`` 1o1 ??;l`";
         algorithm.isPalindrome(s);
     }
+
+    @Test
+    public void myAtoi(){
+        String s= "+";
+        algorithm.myAtoi(s);
+    }
 }
