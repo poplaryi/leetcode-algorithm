@@ -1,6 +1,7 @@
 package com.yangyi;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class StringAlgorithm {
 
@@ -97,13 +98,13 @@ public class StringAlgorithm {
         if (s.length() != t.length()) {
             return false;
         }
-        Map<String, Integer> map = new HashMap<>();
+        Map<String, AtomicInteger> map = new HashMap<>();
 
         Arrays.stream(s.split("")).forEach(a -> {
             if (map.containsKey(a)) {
-                map.put(a, map.get(a) + 1);
+                map.get(a).incrementAndGet();
             } else {
-                map.put(a, 1);
+                map.put(a, new AtomicInteger());
             }
         });
         Map<String, Integer> temp = new HashMap<>();
@@ -222,6 +223,14 @@ public class StringAlgorithm {
                 return new Long(temp).intValue();
             }
         }
+        return 0;
+    }
+
+    /**
+     * 实现strStr
+     */
+    public int strStr(String haystack, String needle) {
+
         return 0;
     }
 }
