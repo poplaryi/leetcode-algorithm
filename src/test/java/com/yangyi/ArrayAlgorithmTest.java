@@ -1,19 +1,33 @@
 package com.yangyi;
 
+
 import org.junit.Test;
 
-
 public class ArrayAlgorithmTest {
-    
+
     @Test
     public void intersect() {
     }
-    
+
     @Test
     public void intersect2() {
-        int[] arr1 = new int[]{0, 0, 4, 9, 5};
-        
+        int[] arr1 = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
+
         ArrayAlgorithm algorithm = new ArrayAlgorithm();
-        
+
+        algorithm.rotate(arr1, 11);
+
     }
+
+    @Test
+    public void maxProfitTest() {
+        int[] arr = new int[]{7, 1, 5, 3, 6, 4};
+        ArrayAlgorithm arrayAlgorithm = new ArrayAlgorithm();
+        int i = arrayAlgorithm.maxProfit(arr);
+        System.out.println(i);
+    }
+
+
+
+
 }
