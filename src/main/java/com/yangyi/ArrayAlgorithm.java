@@ -228,19 +228,15 @@ public class ArrayAlgorithm {
      * 实现strStr()
      */
     public int strStr(String haystack, String needle) {
-
         if (Objects.isNull(needle)) {
             return -1;
         }
-
         if ("".equals(needle)) {
             return 0;
         }
-
         if (haystack.contains(needle)) {
             return haystack.indexOf(needle);
         }
-
         return -1;
     }
 
