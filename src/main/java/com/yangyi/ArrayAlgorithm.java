@@ -240,5 +240,22 @@ public class ArrayAlgorithm {
         return -1;
     }
 
+    /**
+     * 删除元素
+     */
+    public int removeElement(int[] arr, int val) {
+        int left = 0;
+        int right = arr.length;
+        while (left < right) {
+            if (arr[left] == val) {
+                arr[left] = arr[right - 1];
+                right--;
+            } else {
+                left++;
+            }
+        }
+        return left;
+    }
+
 
 }

@@ -28,6 +28,16 @@ public class ArrayAlgorithmTest {
     }
 
 
+    @Test
+    public void delItemTest() {
+        int[] arr = new int[]{1,2,2,1};
+
+        ArrayAlgorithm algorithm = new ArrayAlgorithm();
+
+        int i = algorithm.removeElement(arr, 1);
+
+        System.out.println(i);
+    }
 
 
 }

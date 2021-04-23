@@ -152,7 +152,7 @@ public class StringAlgorithm {
                     continue;
                 }
                 if (!String.valueOf(s.charAt(i)).toUpperCase()
-                    .equals(String.valueOf(s.charAt(j)).toUpperCase())) {
+                        .equals(String.valueOf(s.charAt(j)).toUpperCase())) {
                     return false;
                 }
                 temp--;
@@ -174,8 +174,8 @@ public class StringAlgorithm {
             return 0;
         }
         if (!String.valueOf(str.charAt(0)).matches("[0-9]")
-            && !"+".equals(String.valueOf(str.charAt(0)))
-            && !"-".equals(String.valueOf(str.charAt(0)))) {
+                && !"+".equals(String.valueOf(str.charAt(0)))
+                && !"-".equals(String.valueOf(str.charAt(0)))) {
             return 0;
         }
         if ("-".equals(String.valueOf(str.charAt(0)))) {
@@ -227,10 +227,12 @@ public class StringAlgorithm {
     }
 
     /**
-     * 实现strStr
+     * 罗马数字转整数
      */
-    public int strStr(String haystack, String needle) {
+    public int romanToInt(String s) {
+        int num = 0;
+        String[] split = s.split("");
 
-        return 0;
+        return num;
     }
 }
