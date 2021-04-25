@@ -38,8 +38,22 @@ public class StringAlgorithmTest {
     }
 
     @Test
-    public void myAtoi(){
-        String s= "+";
+    public void myAtoi() {
+        String s = "+";
         algorithm.myAtoi(s);
+    }
+
+    @Test
+    public void romanToIntTest() {
+        String s = "MCMXCIV";
+        int i = algorithm.romanToInt(s);
+        System.out.println(i);
+    }
+
+    @Test
+    public void isValidTest() {
+        String s = "{}()[]";
+        boolean valid = algorithm.isValid(s);
+        System.out.println(valid);
     }
 }

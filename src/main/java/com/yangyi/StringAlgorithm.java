@@ -230,9 +230,72 @@ public class StringAlgorithm {
      * 罗马数字转整数
      */
     public int romanToInt(String s) {
-        int num = 0;
-        String[] split = s.split("");
+        int sum = 0;
+        int preNum = getValue(s.charAt(0));
+        for (int i = 0; i < s.length(); i++) {
+            int num = getValue((s.charAt(i)));
+            if (preNum < num) {
+                sum -= preNum;
+            } else {
+                sum += preNum;
+            }
+            preNum = num;
+        }
+        sum += preNum;
+        return sum;
+    }
 
-        return num;
+    private int getValue(char ch) {
+        switch (ch) {
+            case 'I':
+                return 1;
+            case 'V':
+                return 5;
+            case 'X':
+                return 10;
+            case 'L':
+                return 50;
+            case 'C':
+                return 100;
+            case 'D':
+                return 500;
+            case 'M':
+                return 1000;
+            default:
+                return 0;
+        }
+    }
+
+    public boolean isValid(String s) {
+        if (s.length() % 2 == 1) {
+            return false;
+        }
+        if (s.charAt(0) == ')' || s.charAt(0) == '}' || s.charAt(0) == ']') {
+            return false;
+        }
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '(' || c == '{' || c == '[') {
+                stack.push(c);
+            } else {
+                if (stack.isEmpty()) {
+                    return false;
+                } else {
+                    if (!isCoupleSymbol(stack.pop(), c)) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return stack.isEmpty();
+    }
+
+    private boolean isCoupleSymbol(char i, char j) {
+        if (i == '{' && j == '}') {
+            return true;
+        } else if (i == '[' && j == ']') {
+            return true;
+        } else return i == '(' && j == ')';
     }
 }
