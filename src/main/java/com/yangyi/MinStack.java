@@ -1,6 +1,7 @@
 package com.yangyi;
 
 import java.util.Arrays;
+import java.util.PriorityQueue;
 
 /**
  * @author kcyangyi@gmail.com
@@ -12,6 +13,11 @@ public class MinStack {
     //  条目总数
     private int elementCount = 0;
 
+    private final PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
+
+    /**
+     * initialize your data structure here.
+     */
     public MinStack() {
         elementData = new Object[0];
     }
@@ -20,22 +26,12 @@ public class MinStack {
         if (elementData.length <= elementCount)
             refresh();
         elementData[elementCount++] = val;
-    }
-
-    private void refresh() {
-        int oldCapacity = elementData.length;
-        int newCapacity;
-        // 初始化容量
-        if (oldCapacity <= 10) {
-            newCapacity = 10;
-        } else {
-            newCapacity = oldCapacity * 2;
-        }
-        elementData = Arrays.copyOf(elementData, newCapacity);
+        priorityQueue.add(val);
     }
 
     public void pop() {
-        removeElementAt(elementCount - 1);
+        Object o = removeElementAt(elementCount - 1);
+        priorityQueue.remove(o);
     }
 
     public int top() {
@@ -43,16 +39,22 @@ public class MinStack {
     }
 
     public int getMin() {
-        int temp = (int) elementData[0];
-        for (int i = 1; i < elementCount; i++) {
-            if (temp > ((int) elementData[i])) {
-                temp = (int) elementData[i];
-            }
-        }
-        return temp;
+        return priorityQueue.peek();
     }
 
-    public void removeElementAt(int index) {
+    private void refresh() {
+        int oldCapacity = elementData.length;
+        int newCapacity;
+        // 初始化容量
+        if (oldCapacity < 10) {
+            newCapacity = 10;
+        } else {
+            newCapacity = oldCapacity << 1;
+        }
+        elementData = Arrays.copyOf(elementData, newCapacity);
+    }
+
+    public Object removeElementAt(int index) {
         if (index >= elementCount)
             throw new ArrayIndexOutOfBoundsException();
         else if (index < 0) {
@@ -62,8 +64,9 @@ public class MinStack {
         if (j > 0) {
             System.arraycopy(elementData, index + 1, elementData, index, j);
         }
-        elementCount--;
+        Object o = elementData[--elementCount];
         elementData[elementCount] = null;
+        return o;
     }
 
     public static void main(String[] args) {
