@@ -30,13 +30,24 @@ public class ArrayAlgorithmTest {
 
     @Test
     public void delItemTest() {
-        int[] arr = new int[]{1,2,2,1};
+        int[] arr = new int[]{1, 2, 2, 1};
 
         ArrayAlgorithm algorithm = new ArrayAlgorithm();
 
         int i = algorithm.removeElement(arr, 1);
 
         System.out.println(i);
+    }
+
+    @Test
+    public void nextGreaterElementTest() {
+        int[] nums1 = new int[]{2, 4};
+        int[] nums2 = new int[]{1, 2, 3, 4};
+        ArrayAlgorithm algorithm = new ArrayAlgorithm();
+        int[] ints = algorithm.nextGreaterElement(nums1, nums2);
+        for (int anInt : ints) {
+            System.out.println(anInt);
+        }
     }
 
 
