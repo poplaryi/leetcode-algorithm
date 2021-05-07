@@ -1,4 +1,4 @@
-package com.yangyi;
+package com.yangyi.code.data;
 
 import java.util.Arrays;
 

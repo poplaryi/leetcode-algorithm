@@ -1,4 +1,4 @@
-package com.yangyi.code;
+package com.yangyi.code.util;
 
 public class StringUtils {
 

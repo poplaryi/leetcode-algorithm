@@ -1,4 +1,4 @@
-package com.yangyi;
+package com.yangyi.code.algorithm;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;

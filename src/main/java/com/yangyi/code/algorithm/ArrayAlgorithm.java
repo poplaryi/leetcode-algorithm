@@ -1,6 +1,4 @@
-package com.yangyi;
-
-import com.yangyi.code.StringUtils;
+package com.yangyi.code.algorithm;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -327,6 +325,55 @@ public class ArrayAlgorithm {
             sum += num;
         }
         return sum;
+    }
+
+    /**
+     * 比较含退格的字符串
+     *
+     * @param s
+     * @param t
+     *
+     * @return
+     */
+    public boolean backspaceCompare(String s, String t) {
+        return handleStr(s).equals(handleStr(t));
+    }
+
+    public String handleStr(String str) {
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+            if (c == '#') {
+                if (!stack.isEmpty()) {
+                    stack.pop();
+                }
+                continue;
+            }
+            stack.push(c);
+        }
+        StringBuffer sb = new StringBuffer();
+        for (Character c : stack) {
+            sb.append(c);
+        }
+        return sb.toString();
+    }
+
+    public String removeOuterParentheses(String S) {
+        Stack<Character> stack = new Stack<>();
+        Stack<Character> temp = new Stack<>();
+        for (int i = 0; i < S.length(); i++) {
+            char c = S.charAt(i);
+            if (!stack.isEmpty() && stack.peek().equals(c) && temp.contains(c)) {
+                continue;
+            }
+            stack.push(c);
+            temp.push(c);
+        }
+        StringBuffer sb = new StringBuffer();
+        for (Character c : stack) {
+            sb.append(c);
+        }
+        return sb.toString();
     }
 
 }

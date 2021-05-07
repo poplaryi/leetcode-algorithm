@@ -1,7 +1,11 @@
 package com.yangyi;
 
 
+import com.yangyi.code.algorithm.ArrayAlgorithm;
+import com.yangyi.code.spi.Search;
 import org.junit.Test;
+
+import java.util.ServiceLoader;
 
 public class ArrayAlgorithmTest {
 
@@ -52,10 +56,48 @@ public class ArrayAlgorithmTest {
 
     @Test
     public void calPointsTest() {
-        String[] nums1 = new String[]{"5","-2","4","C","D","9","+","+"};
+        String[] nums1 = new String[]{"5", "-2", "4", "C", "D", "9", "+", "+"};
         ArrayAlgorithm algorithm = new ArrayAlgorithm();
         System.out.println(algorithm.calPoints(nums1));
     }
 
+    @Test
+    public void backspaceCompareTest() {
+        String s = "y#fo##f";
+        String t = "y#f#o##f";
+        ArrayAlgorithm algorithm = new ArrayAlgorithm();
+        System.out.println(algorithm.backspaceCompare(s, t));
+    }
 
+    @Test
+    public void removeOuterParenthesesTest() {
+        String s = "(()())(())(()(()))";
+        ArrayAlgorithm algorithm = new ArrayAlgorithm();
+        System.out.println(algorithm.removeOuterParentheses(s));
+    }
+
+    @Test
+    public void test() {
+        int COUNT_BITS = Integer.SIZE - 3;
+        int RUNNING = -1 << COUNT_BITS;
+        int SHUTDOWN = 0 << COUNT_BITS;
+        int STOP = 1 << COUNT_BITS;
+        int TIDYING = 2 << COUNT_BITS;
+        int TERMINATED = 3 << COUNT_BITS;
+        int capacity = (1 << COUNT_BITS) - 1;
+        System.out.println(RUNNING);
+        System.out.println(SHUTDOWN);
+        System.out.println(STOP);
+        System.out.println(TIDYING);
+        System.out.println(TERMINATED);
+        System.out.println(capacity);
+    }
+
+    @Test
+    public void testCase() {
+        ServiceLoader<Search> load = ServiceLoader.load(Search.class);
+        for (Search next : load) {
+            next.searchDoc("hello");
+        }
+    }
 }

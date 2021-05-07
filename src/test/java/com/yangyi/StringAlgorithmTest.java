@@ -1,8 +1,11 @@
 package com.yangyi;
 
+import com.yangyi.code.algorithm.StringAlgorithm;
+import com.yangyi.code.data.*;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 
 public class StringAlgorithmTest {
 
@@ -55,5 +58,80 @@ public class StringAlgorithmTest {
         String s = "{}()[]";
         boolean valid = algorithm.isValid(s);
         System.out.println(valid);
+    }
+
+    @Test
+    public void testDoubleLink() {
+        User u1 = new User("王二");
+        User u2 = new User("张三");
+        User u3 = new User("李四");
+        User u4 = new User("杨五");
+
+        DoubleLink<User> link = new DoubleLink<>();
+
+        link.add(u1);
+        link.add(u2);
+        link.add(u3);
+        link.add(u4);
+        link.remove(u1);
+        link.remove(u3);
+    }
+
+    @Test
+    public void testSingleLink() {
+        User u1 = new User("王二");
+        User u2 = new User("张三");
+        User u3 = new User("李四");
+        User u4 = new User("杨五");
+
+        SingleLink<User> link = new SingleLink<>();
+
+        link.addHeader(u1);
+        link.addHeader(u2);
+        link.addHeader(u3);
+        link.addHeader(u4);
+        link.remove(u1);
+    }
+
+    @Test
+    public void testSingleLinkCycle() {
+        User u1 = new User("王二");
+        User u2 = new User("张三");
+        User u3 = new User("李四");
+        User u4 = new User("杨五");
+
+        SingleLinkCycle<User> link = new SingleLinkCycle<>();
+
+        link.addTail(u1);
+        link.addTail(u2);
+        link.addTail(u3);
+        link.addTail(u4);
+        link.remove(u1);
+    }
+
+    @Test
+    public void testDoubleLinkCycle() {
+        User u1 = new User("王二");
+        User u2 = new User("张三");
+        User u3 = new User("李四");
+        User u4 = new User("杨五");
+
+        DoubleLinkCycle<User> link = new DoubleLinkCycle<>();
+
+        link.addTail(u1);
+        link.addTail(u2);
+        link.addTail(u3);
+        link.addTail(u4);
+        System.out.println(link);
+    }
+
+    @Test
+    public void testGeneric() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        list.add(1);
+        list.getClass().getMethod("add",Object.class).invoke(list,"asd");
+        for(int i=0;i<list.size();i++){
+            System.out.println(list.get(i));
+        }
     }
 }

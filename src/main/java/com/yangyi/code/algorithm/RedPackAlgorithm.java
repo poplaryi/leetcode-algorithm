@@ -1,4 +1,4 @@
-package com.yangyi;
+package com.yangyi.code.algorithm;
 
 import java.math.BigDecimal;
 import java.util.ArrayDeque;
