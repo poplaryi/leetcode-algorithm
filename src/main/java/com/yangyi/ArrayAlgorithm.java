@@ -287,4 +287,46 @@ public class ArrayAlgorithm {
     }
 
 
+    /**
+     * 棒球比賽
+     *
+     * @param ops
+     *
+     * @return
+     */
+    public int calPoints(String[] ops) {
+        Stack<Integer> stack = new Stack<>();
+        for (String op : ops) {
+            if (op.equals("+")) {
+                if (!stack.isEmpty() && stack.peek() != null) {
+                    int temp1 = stack.pop();
+                    int temp2 = stack.pop();
+                    stack.push(temp2);
+                    stack.push(temp1);
+                    stack.push(temp1 + temp2);
+                }
+                continue;
+            }
+            if (op.equals("C")) {
+                if (!stack.isEmpty()) {
+                    stack.pop();
+                }
+                continue;
+            }
+            if (op.equals("D")) {
+                if (!stack.isEmpty()) {
+                    int temp = stack.peek();
+                    stack.push(temp * 2);
+                }
+                continue;
+            }
+            stack.push(Integer.parseInt(op));
+        }
+        int sum = 0;
+        for (Integer num : stack) {
+            sum += num;
+        }
+        return sum;
+    }
+
 }
