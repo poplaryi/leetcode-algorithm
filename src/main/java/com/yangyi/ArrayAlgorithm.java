@@ -329,4 +329,35 @@ public class ArrayAlgorithm {
         return sum;
     }
 
+    /**
+     * 比较含退格的字符串
+     *
+     * @param s
+     * @param t
+     *
+     * @return
+     */
+    public boolean backspaceCompare(String s, String t) {
+        return handleStr(s).equals(handleStr(t));
+    }
+
+    public String handleStr(String str) {
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+            if (c == '#') {
+                if (!stack.isEmpty()) {
+                    stack.pop();
+                }
+                continue;
+            }
+            stack.push(c);
+        }
+        StringBuffer sb = new StringBuffer();
+        for (Character c : stack) {
+            sb.append(c);
+        }
+        return sb.toString();
+    }
+
 }

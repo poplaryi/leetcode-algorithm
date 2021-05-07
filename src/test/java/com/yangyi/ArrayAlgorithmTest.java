@@ -52,10 +52,17 @@ public class ArrayAlgorithmTest {
 
     @Test
     public void calPointsTest() {
-        String[] nums1 = new String[]{"5","-2","4","C","D","9","+","+"};
+        String[] nums1 = new String[]{"5", "-2", "4", "C", "D", "9", "+", "+"};
         ArrayAlgorithm algorithm = new ArrayAlgorithm();
         System.out.println(algorithm.calPoints(nums1));
     }
 
+    @Test
+    public void backspaceCompareTest() {
+        String s = "y#fo##f";
+        String t = "y#f#o##f";
+        ArrayAlgorithm algorithm = new ArrayAlgorithm();
+        System.out.println(algorithm.backspaceCompare(s, t));
+    }
 
 }
