@@ -160,7 +160,10 @@ public class FileIO {
         }
     }
 
-
+    /**
+     * 递归读取
+     * @param file
+     */
     private static void extracted(File file) {
         if (file.isDirectory()) {
             System.out.println("Dir:" + file.getName());

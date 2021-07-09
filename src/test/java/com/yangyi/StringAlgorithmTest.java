@@ -7,6 +7,8 @@ import org.junit.Test;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
+import static org.junit.Assert.*;
+
 public class StringAlgorithmTest {
 
     private static StringAlgorithm algorithm = new StringAlgorithm();
